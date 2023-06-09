@@ -169,7 +169,7 @@ resource "aws_ec2_transit_gateway" "transit_gateway" {
   
 resource "aws_ec2_transit_gateway_vpc_attachment" "rosa_vpc_attachment" {
     for_each      = toset(data.aws_availability_zones.azs.names)
-    subnet_ids     = aws_subnet.rosa-subnet-pub[each.value].id
+    subnet_ids     = [aws_subnet.rosa-subnet-pub[each.value].id]
     transit_gateway_id       = aws_ec2_transit_gateway.transit_gateway.id
     vpc_id                   = aws_vpc.rosa-vpc.id
     
@@ -180,7 +180,7 @@ resource "aws_ec2_transit_gateway_vpc_attachment" "rosa_vpc_attachment" {
   
   resource "aws_ec2_transit_gateway_vpc_attachment" "egress_vpc_attachment" {
     for_each      = toset(data.aws_availability_zones.azs.names)
-    subnet_ids     = aws_subnet.egress-subnet-pub[each.value].id
+    subnet_ids     = [aws_subnet.egress-subnet-pub[each.value].id]
     transit_gateway_id       = aws_ec2_transit_gateway.transit_gateway.id
     vpc_id                   = aws_vpc.egress-vpc.id
   
