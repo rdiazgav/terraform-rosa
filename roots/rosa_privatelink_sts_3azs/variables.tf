@@ -10,6 +10,12 @@ variable "env_name" {
     type = string
 }
 
+variable "egress_env_name" {
+    default = "egressenv"
+    description   = "Environment name"
+    type = string
+}
+
 variable "cluster_name" {
     default = "rosatest-01"
     description   = "Cluster name"
