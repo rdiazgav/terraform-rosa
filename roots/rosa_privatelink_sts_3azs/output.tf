@@ -2,13 +2,13 @@ locals {
    subnets = join(",", [for subnet in aws_subnet.rosa-subnet-priv: subnet.id])
 }
 
-output "bastion_ip" {
-    value = <<EOF
-[+] Logging to the RHEL bastion host:
-ssh ec2-user@${module.bastion.bastion-ip}
-EOF
-    description = "Bastion access"
-}
+//output "bastion_ip" {
+//    value = <<EOF
+//[+] Logging to the RHEL bastion host:
+//ssh ec2-user@${module.bastion.bastion-ip}
+//EOF
+//    description = "Bastion access"
+//}
 
 output "script" {
     value = <<EOF
