@@ -5,67 +5,47 @@ variable "aws_region" {
 }
 
 variable "env_name" {
-    default = "rosaenv"
+    default = "lmartinhrosaenvb"
     description   = "Environment name"
     type = string
 }
 
 variable "egress_env_name" {
-    default = "egressenv"
+    default = "lmartinhegressenvb"
     description   = "Environment name"
     type = string
 }
 
 variable "cluster_name" {
-    default = "rosatest-01"
+    default = "lmartinh04"
     description   = "Cluster name"
     type = string
 }
 
+variable "ocp_version" {
+    default = "4.12.14"
+    description   = "OCP Version to Install."
+    type = string
+}
+
 variable "cluster_owner_tag" {
-    default = "undefined"
+    default = "lmartinh"
     description   = "Cluster owner name to tag resources"
     type = string
 }
 
 variable "cluster_cidr" {
     default = "10.1.0.0/16"
-    description   = "Cluster name"
+    description   = "ROSA VPC CIDR"
 }
 
-# following two not in use for now
-variable "priv_subs" {
-   type = map
-   default = {
-      az-1 = {
-         cidr = "10.1.198.0/24"
-      }
-      az-2 = {
-         cidr = "10.1.199.0/24"
-      }
-      az-3 = {
-         cidr = "10.1.200.0/24"
-      }
-   }
-}
-
-variable "pub_subs" {
-   type = map
-   default = {
-      sub-1 = {
-         cidr = "10.1.198.0/24"
-      }
-      sub-2 = {
-         cidr = "10.1.199.0/24"
-      }
-      sub-3 = {
-         cidr = "10.1.200.0/24"
-      }
-   }
+variable "egress_vpc_cidr" {
+    default = "10.0.0.0/16"
+    description   = "Egress VPC CIDR"
 }
 
 variable "pubkey" {
-    default = ""
+    default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJNlcwQ2lkhUbIHIv8SKHUpnBu2gs/hf/GuuOXfZcZbSe8SrREsXi1upNpi7w4O+9xHg4HqgRkTfo9UNy0n14bSw0LO5u5fbsW23lmjO7yvg14eQEBMcG80JaC7AUNPm90DBjvWhtR9gn8fuxO9KPgeAY+MW6hbygHpZqeVOQOboWX+m0GcgAA3aKzXi1iRMt50x4Ea8MNHtn+sJz/1WtmRNu56YjT9/d8IwQb7iTFd990uoeGOdYhZyC55Yd0ID+3zGi3fUB/ZRXgQIHmEOVpCkgSRVCygxAX8vn5UDMFWC/xCaUrZV8DqsjpxXFu3XCp1tro24XvZMpktqELliVzruhYeFI1g0SlzHHCga95KnXKaHeCAB/iLqQ/C/2QJ6r86qMcg1JuA6Y4GaaaA+Rsv454pUyXQVV8HT34PXYWZ8qp4v0NkLp5Ps+9n0VVqMVXym/Bp2MgncxVBWVqbfMNnWTLAIfGjckkBdVZFJD8cHBnrbZ/xEjk7AmDfrhl9Es= lmartinh@ovpn-12-48.pek2.redhat.com"
     description   = "Pubkey to use in any system that requires it."
 }
 
@@ -96,3 +76,79 @@ variable "generic_ami" {
   }
     description   = "AMI to use in any system that does not belong to the cluster."
 }
+
+
+# following two not in use for now
+//variable "cluster_priv_subs" {
+//   type = map
+//   default = {
+//      az-1 = {
+//         cidr = "10.1.198.0/24"
+//      }
+//      az-2 = {
+//         cidr = "10.1.199.0/24"
+//      }
+//      az-3 = {
+//         cidr = "10.1.200.0/24"
+//      }
+//   }
+//}
+
+//variable "cluster_pub_subs" {
+//  type = map
+//   default = {
+//      sub-1 = {
+//         cidr = "10.1.100.0/24"
+//      }
+//      sub-2 = {
+//         cidr = "10.1.101.0/24"
+//      }
+//      sub-3 = {
+//         cidr = "10.1.102.0/24"
+//      }
+//   }
+//}
+
+# following two not in use for now
+//variable "egress-vpc_priv_subs" {
+//   type = map
+//   default = {
+//      az-1 = {
+//         cidr = "10.0.101.0/24"
+//      }
+//      az-2 = {
+//         cidr = "10.0.102.0/24"
+//      }
+//      az-3 = {
+//         cidr = "10.0.103.0/24"
+//      }
+//   }
+//}
+
+//variable "egress-vpc_pub_subs" {
+//  type = map
+//   default = {
+//      sub-1 = {
+//         cidr = "10.1.110.0/24"
+//      }
+//      sub-2 = {
+//         cidr = "10.1.111.0/24"
+//      }
+//      sub-3 = {
+//         cidr = "10.1.112.0/24"
+//      }
+//   }
+//}
+
+//locals {
+//  public_subnets = {
+//    "${var.region}a" = "10.10.101.0/24"
+//    "${var.region}b" = "10.10.102.0/24"
+//    "${var.region}c" = "10.10.103.0/24"
+//  }
+//  private_subnets = {
+//    "${var.region}a" = "10.10.201.0/24"
+//    "${var.region}b" = "10.10.202.0/24"
+//    "${var.region}c" = "10.10.203.0/24"
+//  }
+//}

@@ -20,7 +20,7 @@ REGION=${var.aws_region}
 SUBNET=${local.subnets}
 OWNER=${var.cluster_owner_tag}
 CLUSTER_NAME=${var.cluster_name}
-VERSION=4.11.5
+VERSION=${var.ocp_version}
 ROSA_ENVIRONMENT=Test
 
 rosa create ocm-role --mode auto -y --admin
@@ -36,3 +36,5 @@ echo "Follow logs with: rosa logs install -c $CLUSTER_NAME --watch"
 EOF
     description = "Script to deploy cluster."
 }
+
+

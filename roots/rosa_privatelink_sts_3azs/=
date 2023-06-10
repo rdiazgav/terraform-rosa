@@ -1,0 +1,81 @@
+Script started on 2023-06-10 18:16:27+02:00 [<not executed on terminal>]
+[+] Create the following script and modify it at will. Run the script where rosa CLI is configured:
+
+#!/bin/bash
+
+REGION=eu-central-1
+SUBNET=subnet-04f93bea569939231,subnet-06d3b2644c06a7634,subnet-0b046b6b4959a3155
+OWNER=lmartinh
+CLUSTER_NAME=lmartinh02
+VERSION=4.12.14
+ROSA_ENVIRONMENT=Test
+
+rosa create ocm-role --mode auto -y --admin
+rosa create user-role --mode auto -y
+rosa create account-roles --mode auto -y
+time rosa create cluster --region eu-central-1 --version 4.12.14 --enable-autoscaling --min-replicas 3 --max-replicas 6 --private-link --cluster-name=lmartinh03 --machine-cidr=10.1.0.0/16 --subnet-ids=subnet-00058b2b8b78fdb84,subnet-04069fc4c2a572ea3,subnet-0f23478f280c3943c --tags=Owner:lmartinh,Environment:Test --sts -y --multi-az  || exit 1
+sleep 5
+rosa create operator-roles --cluster lmartinh03 -y --mode auto
+rosa create oidc-provider --cluster lmartinh03 -y --mode auto
+
+echo "Follow logs with: rosa logs install -c lmartinh03 --watch"
+
+
+]777;notify;Command completed;exit\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ [+] Create the following script and modify it at will. Run the script where rosa CLI is configured:
+[?2004l]777;preexec\bash: [+]: command not found...
+]777;notify;Command completed;[+] Create the following script and modify it at will. Run the script where rosa CLI is configured:\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ 
+[?2004l]777;notify;Command completed;[+] Create the following script and modify it at will. Run the script where rosa CLI is configured:\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ #!/bin/bash
+[?2004l]777;notify;Command completed;#!/bin/bash\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ 
+[?2004l]777;notify;Command completed;#!/bin/bash\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ REGION=eu-central-1
+[?2004l]777;preexec\]777;notify;Command completed;REGION=eu-central-1\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ SUBNET=subnet-04f93bea569939231,subnet-06d3b2644c06a7634,subnet-0b046b6b4959a3155
+[?2004l]777;preexec\]777;notify;Command completed;SUBNET=subnet-04f93bea569939231,subnet-06d3b2644c06a7634,subnet-0b046b6b4959a3155\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ OWNER=lmartinh
+[?2004l]777;preexec\]777;notify;Command completed;OWNER=lmartinh\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ CLUSTER_NAME=lmartinh02
+[?2004l]777;preexec\]777;notify;Command completed;CLUSTER_NAME=lmartinh02\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ VERSION=4.12.14
+[?2004l]777;preexec\]777;notify;Command completed;VERSION=4.12.14\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ ROSA_ENVIRONMENT=Test
+[?2004l]777;preexec\]777;notify;Command completed;ROSA_ENVIRONMENT=Test\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ 
+[?2004l]777;notify;Command completed;ROSA_ENVIRONMENT=Test\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ rosa create ocm-role --mode auto -y --admin
+[?2004l]777;preexec\[0;36mI:[m Creating ocm role
+[0;36mI:[m Creating role using 'arn:aws:iam::015719942846:user/lmartinh'
+[0;33mW:[m Role 'ManagedOpenShift-OCM-Role-1979710' already exists
+[0;36mI:[m Linking OCM role
+[0;36mI:[m Role-arn 'arn:aws:iam::015719942846:role/ManagedOpenShift-OCM-Role-1979710' is already linked with the organization account '1GXbLc45FSS70m9GxEULgCiwAxr'
+]777;notify;Command completed;rosa create ocm-role --mode auto -y --admin\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ rosa create user-role --mode auto -y
+[?2004l]777;preexec\[0;36mI:[m Creating User role
+[0;36mI:[m Creating ocm user role using 'arn:aws:iam::015719942846:user/lmartinh'
+[0;33mW:[m Role 'ManagedOpenShift-User-rhn-support-lmartinh-Role' already exists
+[0;36mI:[m Linking User role
+[0;36mI:[m Successfully linked role ARN 'arn:aws:iam::015719942846:role/ManagedOpenShift-User-rhn-support-lmartinh-Role' with account '1KZt0aVhEhdAXYH8pPyX7Dl4tk9'
+]777;notify;Command completed;rosa create user-role --mode auto -y\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ rosa create account-roles --mode auto -y
+[?2004l]777;preexec\[0;36mI:[m Logged in as 'rhn-support-lmartinh' on 'https://api.openshift.com'
+[0;36mI:[m Validating AWS credentials...
+[0;36mI:[m AWS credentials are valid!
+[0;36mI:[m Validating AWS quota...
+[0;36mI:[m AWS quota ok. If cluster installation fails, validate actual AWS resource usage against https://docs.openshift.com/rosa/rosa_getting_started/rosa-required-aws-service-quotas.html
+[0;36mI:[m Verifying whether OpenShift command-line tool is available...
+[0;36mI:[m Current OpenShift Client Version: 4.12.4
+[0;36mI:[m Creating account roles
+[0;36mI:[m Creating roles using 'arn:aws:iam::015719942846:user/lmartinh'
+[0;36mI:[m Created role 'ManagedOpenShift-Worker-Role' with ARN 'arn:aws:iam::015719942846:role/ManagedOpenShift-Worker-Role'
+[0;36mI:[m Created role 'ManagedOpenShift-Support-Role' with ARN 'arn:aws:iam::015719942846:role/ManagedOpenShift-Support-Role'
+[0;36mI:[m Created role 'ManagedOpenShift-Installer-Role' with ARN 'arn:aws:iam::015719942846:role/ManagedOpenShift-Installer-Role'
+[0;36mI:[m Created role 'ManagedOpenShift-ControlPlane-Role' with ARN 'arn:aws:iam::015719942846:role/ManagedOpenShift-ControlPlane-Role'
+[0;36mI:[m To create a cluster with these roles, run the following command:
+rosa create cluster --sts
+]777;notify;Command completed;rosa create account-roles --mode auto -y\]777;precmd\]0;lmartinh@lapluis:/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\]7;file://lapluis/mnt/vm/Var/my_git-clone/terraform-rosa-mauro_changed_by_roberto_luis/roots/rosa_privatelink_sts_3azs\[?2004h[lmartinh@lapluis rosa_privatelink_sts_3azs]$ time rosa create cluster --region eu-central-1 --version 4.12.14 --enable-autoscaling --min-replicas 3 --max-replicas 6 --private-link --cluster-name=lmartinh03 --machine-cidr=10.1.0.0/16 --subnet-ids=subnet-00058b2b8b78fdb84,subnet-04069fc4c2a572ea3,subnet-0f23478f280c3943c --tags=Owner:lmartinh,Environment:Test --sts -y --multi-az  || exit 1
+[?2004l]777;preexec\[0;33mW:[m In a future release STS will be the default mode.
+[0;33mW:[m --sts flag won't be necessary if you wish to use STS.
+[0;33mW:[m --non-sts/--mint-mode flag will be necessary if you do not wish to use STS.
+[0;33mW:[m More than one Installer role found
+[0;36mI:[m Using arn:aws:iam::015719942846:role/ManagedOpenShift-Installer-Role for the Installer role
+[0;36mI:[m Using arn:aws:iam::015719942846:role/ManagedOpenShift-Support-Role for the Support role
+[0;36mI:[m Using arn:aws:iam::015719942846:role/ManagedOpenShift-ControlPlane-Role for the ControlPlane role
+[0;36mI:[m Using arn:aws:iam::015719942846:role/ManagedOpenShift-Worker-Role for the Worker role
+[0;33mW:[m You are choosing to use AWS PrivateLink for your cluster. STS clusters can only be private if AWS PrivateLink is used. Once the cluster is created, this option cannot be changed. 
+[0;31mE:[m Could not find the following subnet provided: subnet-00058b2b8b78fdb84
+
+real	0m26.957s
+user	0m0.652s
+sys	0m0.093s
+exit
+
+Script done on 2023-06-10 18:17:20+02:00 [COMMAND_EXIT_CODE="1"]
