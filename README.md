@@ -37,10 +37,10 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
  * The terraform CLI
 
 ## Deploy Environment
-1. Rename the file terraform.tsvars.example to terraform.tsvars, and configure in the file the SSH public Key parameter
+1. Rename the file terraform.tfvars.example to terraform.tfvars, and configure in the file the SSH public Key parameter
 ```
-mv terraform.tsvars.example terraform.tsvars
-vi terraform.tsvars
+mv terraform.tfvars.example terraform.tfvars
+vi terraform.tfvars
 ```
 
 2. Clone this repo
