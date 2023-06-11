@@ -29,7 +29,7 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
 
 ## Diagram
 
-![Quick Drawing](./images/quick-drawing.png)
+![Quick Drawing](./images/quick-drawing.jpg)
 
 
 ## Prerequisites
