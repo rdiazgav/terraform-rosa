@@ -7,25 +7,24 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
 ## Resources
 
 ### For the ROSA cluster
- * It is a fully private cluster (ROSA only in private subnets).
- * Egress traffic is routed to the TGW.
  * ROSA VPC
- * Public and Private subnets
- * Internet GW
- * EIP
- * NAT GW
+ * Private subnets only
+ * Egress traffic is routed to the TGW.
  * Routing tables, rules and association for each subnet
+ * Bastion Host 1. configured on the public subnet of the ROSA VPC.
 
 ### Hub - TGW
  * Attachments to the privete subnetworks
 
 ### Egress VPC
+ * EGRESS VPC
+ * Internet GW
+ * EIP
+ * NAT GW
+ * Bastion Host2
 
+### Two Bastion hosts are deployed
 
-### Two Bastion host will be deployed
- * Security group
- * Public key
- * Bastion instance
 
 ## Diagram
 
