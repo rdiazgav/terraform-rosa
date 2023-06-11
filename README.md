@@ -37,23 +37,23 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
  * The terraform CLI
 
 ## Deploy Environment
-1. Rename the file terraform.tfvars.example to terraform.tfvars, and configure in the file the SSH public Key parameter
+1. Clone this repo
+```
+$ git clone https://github.com/luisevm/terraform-rosa.git
+```
+
+2. Go to path
+```
+cd terraform-rosa/roots/rosa_privatelink_sts_3azs
+```
+
+4. Rename the file terraform.tfvars.example to terraform.tfvars, and configure in the file the SSH public Key parameter
 ```
 mv terraform.tfvars.example terraform.tfvars
 vi terraform.tfvars
 ```
 
-2. Clone this repo
-```
-$ git clone https://github.com/luisevm/terraform-rosa.git
-```
-
-3. Go to path
-```
-cd terraform-rosa/roots/rosa_privatelink_sts_3azs
-```
-
-4. Deploy AWS resources
+5. Deploy AWS resources
 ```
 terraform init
 terraform plan -out "rosa.plan"
