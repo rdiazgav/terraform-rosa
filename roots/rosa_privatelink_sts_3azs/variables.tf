@@ -45,9 +45,10 @@ variable "egress_vpc_cidr" {
 }
 
 variable "pubkey" {
-    default = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJNlcwQ2lkhUbIHIv8SKHUpnBu2gs/hf/GuuOXfZcZbSe8SrREsXi1upNpi7w4O+9xHg4HqgRkTfo9UNy0n14bSw0LO5u5fbsW23lmjO7yvg14eQEBMcG80JaC7AUNPm90DBjvWhtR9gn8fuxO9KPgeAY+MW6hbygHpZqeVOQOboWX+m0GcgAA3aKzXi1iRMt50x4Ea8MNHtn+sJz/1WtmRNu56YjT9/d8IwQb7iTFd990uoeGOdYhZyC55Yd0ID+3zGi3fUB/ZRXgQIHmEOVpCkgSRVCygxAX8vn5UDMFWC/xCaUrZV8DqsjpxXFu3XCp1tro24XvZMpktqELliVzruhYeFI1g0SlzHHCga95KnXKaHeCAB/iLqQ/C/2QJ6r86qMcg1JuA6Y4GaaaA+Rsv454pUyXQVV8HT34PXYWZ8qp4v0NkLp5Ps+9n0VVqMVXym/Bp2MgncxVBWVqbfMNnWTLAIfGjckkBdVZFJD8cHBnrbZ/xEjk7AmDfrhl9Es= lmartinh@ovpn-12-48.pek2.redhat.com"
+    default = ""
     description   = "Pubkey to use in any system that requires it."
 }
+
 
 # Using RHEL AMIs https://access.redhat.com/solutions/15356
 variable "generic_ami" {

@@ -38,6 +38,7 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
  * The terraform CLI
 
 ## Deploy Environment
+0. Add the SSH public Key to terraform.tfvars
 
 1. Clone this repo
 ```

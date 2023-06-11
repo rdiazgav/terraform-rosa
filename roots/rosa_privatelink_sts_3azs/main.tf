@@ -180,11 +180,9 @@ resource "aws_route_table" "egress-private-rt" {
     vpc_id       = aws_vpc.egress-vpc.id
     //depends_on    = [aws_eip.rosa-eip[each.value]]
 
-//!!!!!For now the DF GW - was created manually on the aws console - see how to do it via terraform!!!!!
     route {
         cidr_block = "0.0.0.0/0"
         nat_gateway_id = aws_nat_gateway.egress-natgw[each.value].id
-// ???ERROR--->       nat_gateway_id = [aws_nat_gateway.egress-natgw[each.value].id]
     }
 
     //Route for the ROSA cluster - private subnets
