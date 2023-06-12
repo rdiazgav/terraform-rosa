@@ -93,8 +93,8 @@ rosa create oidc-provider --cluster $CLUSTER_NAME -y --mode auto
 // (manualmiente generate keys (pub+priv))              (Terraform keys (pub+priv) )                   (authorized_key = pub)
 // Cliente (ssh -i priv ec2-user@bastion1)    ->  Bastion1 (ssh -i priv ec2-user@bastion2)   ->         Bastion2 -> OCP
 
-export IP_BASTION1=18.195.59.33
-export IP_BASTION2=10.1.21.105
+export IP_BASTION1=your_ip
+export IP_BASTION2=your_ip
  
 1.Get private key from Bastion host and save to a file
 ```
@@ -127,5 +127,5 @@ vi /etc/hosts
 6.Establish two SSH tunnels, Bastion1 and Bastion2
 cliente  ->  Bastion1  ->  Bastion2 -> OCP
 ```
-ssh -L 6443:localhost:6443 $IP_BASTION1 ssh -L 6443:localhost:6443 -N $IP_BASTION2 -i id_rsa
+ssh -L 6443:localhost:6443 ec2-user@$IP_BASTION1 -i key ssh -L 44555:localhost:6443 -N ec2-user@$IP_BASTION2 -i id_rsa
 ```
