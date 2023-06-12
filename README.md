@@ -46,7 +46,7 @@ The infrastructure deployment is divided in two diferent phases.
 ### Deploy Auxiliary Infrastructure - First Phase
 1. Clone this repo
 ```
-$ git clone https://github.com/luisevm/terraform-rosa.git
+$ git clone https://github.com/CSA-RH/terraform-rosa.git
 ```
 
 2. Go to path
