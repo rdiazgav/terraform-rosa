@@ -46,7 +46,7 @@ The infrastructure deployment is divided in two diferent phases.
 ### Deploy Auxiliary Infrastructure - First Phase
 1. Clone this repo
 ```
-$ git clone https://github.com/CSA-RH/terraform-rosa.git
+$ git clone https://github.com/luisevm/terraform-rosa.git
 ```
 
 2. Go to path
@@ -69,7 +69,7 @@ terraform apply "rosa.plan"
 
 ### Deploy ROSA Cluster - Second Phase
 
-- Run the script that is displayed in the output of terraform apply command.
+ * Run the script that is displayed in the output of terraform apply command.
 ```
 #!/bin/bash
 
@@ -88,6 +88,27 @@ rosa create operator-roles --cluster $CLUSTER_NAME -y --mode auto
 rosa create oidc-provider --cluster $CLUSTER_NAME -y --mode auto
 ```
 
-- SSH into the bastion host 
+### SSH into the bastion host
+//     (authorized_key = pub)                       
+// (manualmiente generate keys (pub+priv))              (Terraform keys (pub+priv) )                   (authorized_key = pub)
+// Cliente (ssh -i priv ec2-user@bastion1)    ->  Bastion1 (ssh -i priv ec2-user@bastion2)   ->         Bastion2 -> OCP
 
+export IP_BASTION1=18.195.59.33
+export IP_BASTION2=10.1.21.105
+ 
+1.Get private key from Bastion host and save to a file
+```
+terraform output -raw private_key > id_rsa
+chmode 400 id_rsa
+```
 
+2..Copy the Private SSH key to Bastion1
+```
+ssh-copy-id -i id_rsa ec2-user@IP_Bastion1
+```
+
+3.Establish two SSH tunnels, Bastion1 and Bastion2
+cliente  ->  Bastion1  ->  Bastion2 -> OCP
+```
+ssh -L 6443:localhost:6443 $IP_BASTION1 ssh -L 6443:localhost:6443 -N $IP_BASTION2 -i id_rsa
+```
