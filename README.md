@@ -104,10 +104,27 @@ chmode 400 id_rsa
 
 2..Copy the Private SSH key to Bastion1
 ```
-ssh-copy-id -i id_rsa ec2-user@IP_Bastion1
+ssh-copy-id -i ./id_rsa ec2-user@IP_Bastion1
 ```
 
-3.Establish two SSH tunnels, Bastion1 and Bastion2
+3.Note the DNS of the OCP API
+rosa describe cluster -c $CLUSTER_NAME
+
+4.Create a ROSA admin user and save the login command for use later
+```
+rosa create admin -c $ROSA_CLUSTER_NAME
+```
+
+5.Configure the client hosts file
+```
+vi /etc/hosts
+
+127.0.0.1 api.$YOUR_OPENSHIFT_DNS
+127.0.0.1 console-openshift-console.apps.$YOUR_OPENSHIFT_DNS
+127.0.0.1 oauth-openshift.apps.$YOUR_OPENSHIFT_DNS
+```
+
+6.Establish two SSH tunnels, Bastion1 and Bastion2
 cliente  ->  Bastion1  ->  Bastion2 -> OCP
 ```
 ssh -L 6443:localhost:6443 $IP_BASTION1 ssh -L 6443:localhost:6443 -N $IP_BASTION2 -i id_rsa
