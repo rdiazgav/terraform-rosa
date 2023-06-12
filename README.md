@@ -37,6 +37,12 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
  * The terraform CLI
 
 ## Deploy Environment
+The infrastructure deployment is divided in two diferent phases. 
+ * First phase: consists deploying Terraform plan to create the auxiliary infrastructure. By auxiliary infrasctructure I mean: the VPCs (rosa and egress), Transit GW, NAT GW, IGW, configure the Routing tables, etc... 
+
+ * Second phase: Use the ROSA cmd cli to create the rosa cluster.
+
+### Deploy Auxiliary Infrastructure - First Phase
 1. Clone this repo
 ```
 $ git clone https://github.com/luisevm/terraform-rosa.git
@@ -60,9 +66,27 @@ terraform plan -out "rosa.plan"
 terraform apply "rosa.plan"
 ```
 
-## Deploy Cluster
+### Deploy ROSA Cluster - Second Phase
 
 - Run the script that is displayed in the output of terraform apply command.
-- SSH into the bastion host as instructed
+```
+#!/bin/bash
+
+REGION=eu-central-1
+SUBNET=subnet-0ok0f8...,subnet-046ac...,subnet-08hjj...
+OWNER=lmartinh
+CLUSTER_NAME=mycluster01
+VERSION=4.12.14
+ROSA_ENVIRONMENT=Test
+
+rosa create ocm-role --mode auto -y --admin
+rosa create user-role --mode auto -y
+rosa create account-roles --mode auto -y
+rosa create cluster --region $REGION --version $VERSION --enable-autoscaling --min-replicas 3 --max-replicas 6 --private-link --cluster-name=$CLUSTER_NAME --machine-cidr=10.1.0.0/16 --subnet-ids=$SUBNET --tags=Owner:$OWNER,Environment:$ROSA_ENVIRONMENT --sts -y --multi-az
+rosa create operator-roles --cluster $CLUSTER_NAME -y --mode auto
+rosa create oidc-provider --cluster $CLUSTER_NAME -y --mode auto
+```
+
+- SSH into the bastion host 
 
 
