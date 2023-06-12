@@ -35,6 +35,7 @@ This Terraform template will deploy a Hub and Spoke architecture, with an egress
 
  * The terraform AWS provider will need the user to be [authenticated](https://registry.terraform.io/providers/hashicorp/aws/latest/docs#authentication-and-configuration)
  * The terraform CLI
+ * The ROSA CLI
 
 ## Deploy Environment
 The infrastructure deployment is divided in two diferent phases. 
