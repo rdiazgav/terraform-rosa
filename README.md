@@ -108,7 +108,9 @@ ssh-copy-id -i ./id_rsa ec2-user@IP_Bastion1
 ```
 
 3.Note the DNS of the OCP API
+```
 rosa describe cluster -c $CLUSTER_NAME
+```
 
 4.Create a ROSA admin user and save the login command for use later
 ```
