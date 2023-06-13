@@ -67,7 +67,7 @@ terraform plan -out "rosa.plan"
 terraform apply "rosa.plan"
 ```
 
-## Deploy ROSA Cluster - Second Phase
+### Deploy ROSA Cluster - Second Phase
 
  * Run the script that is displayed in the output of terraform apply command.
 
@@ -89,7 +89,7 @@ rosa create operator-roles --cluster $CLUSTER_NAME -y --mode auto
 rosa create oidc-provider --cluster $CLUSTER_NAME -y --mode auto
 ```
 
-### SSH into the bastion host
+## SSH into the bastion host
 //     (authorized_key = pub)                       
 // (manualmiente generate keys (pub+priv))              (Terraform keys (pub+priv) )                   (authorized_key = pub)
 // Cliente (ssh -i priv ec2-user@bastion1)    ->  Bastion1 (ssh -i priv ec2-user@bastion2)   ->         Bastion2 -> OCP
