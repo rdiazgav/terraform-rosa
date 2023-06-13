@@ -275,18 +275,6 @@ resource "aws_ec2_transit_gateway_route" "tgw_rt" {
 //   pubkey            = var.pubkey
 //}
 
-
-/*
-resource "aws_key_pair" "bastion-keypair" {
-    key_name   = "${var.egress_env_name}-keypair"
-    public_key = var.pubkey
-    tags       = {
-        Owner = var.cluster_owner_tag
-        Name  = "${var.egress_env_name}-keypair"
-    }
-}
-*/
-
 resource "aws_security_group" "egress-vpc-bastion-sg" {
     name        = "${var.egress_env_name}-sg"
     description = "Allow SSH inbound traffic and allow all outbound"
@@ -311,12 +299,9 @@ resource "aws_security_group" "egress-vpc-bastion-sg" {
     }
 }
 
-
 //(authorized_key = pub)                       
 //(manualmiente generate keys (pub+priv))                   (Terraform keys (pub+priv) )                  (authorized_key = pub)
 //          Cliente (ssh -i priv ec2-user@bastion1)    ->  Bastion1 (ssh -i priv ec2-user@bastion2)   ->         Bastion2 -> OCP
-
-
 
 //To get the private key - after terraform runs
 //terraform output -raw private_key
@@ -383,8 +368,7 @@ resource "aws_instance" "rosa-vpc-bastion" {
     ami                           = var.generic_ami[var.aws_region]
     associate_public_ip_address   = false
     instance_type                 = "t3.micro"
-//    private_ip                    = "10.1.23.100"    // rosa vpc subnet_public
-    //https://www.phillipsj.net/posts/generating-ssh-keys-with-terraform/
+    private_ip                    = "10.1.21.100"    // rosa vpc subnet_public
     key_name                      = aws_key_pair.generated_key.key_name    
     subnet_id                     = local.subnets_rosa_pub[0]     //rosa_vpc subnet_public - bastion only in one AZ - grabs only one AZ subnet
     vpc_security_group_ids        = [aws_security_group.rosa-vpc-bastion-sg.id]

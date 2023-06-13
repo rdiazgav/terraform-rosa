@@ -33,7 +33,7 @@ rosa create oidc-provider --cluster $CLUSTER_NAME -y --mode auto
 
 echo "Follow logs with: rosa logs install -c $CLUSTER_NAME --watch"
 
-EOF
+    EOF
     description = "Script to deploy cluster."
 }
 
