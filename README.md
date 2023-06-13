@@ -67,7 +67,7 @@ terraform plan -out "rosa.plan"
 terraform apply "rosa.plan"
 ```
 
-### Deploy ROSA Cluster - Second Phase
+## Deploy ROSA Cluster - Second Phase
 
  * Run the script that is displayed in the output of terraform apply command.
 
