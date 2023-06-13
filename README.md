@@ -142,4 +142,9 @@ ssh -tt -L $local_host_port:localhost:$host1_port $user@$host1 -i id_rsa \
 ssh -tt -L $host1_port:localhost:$host2_port $user@$host2
 ```
 
-
+7.Use oc cli command to interact with OCP cluster
+Login with the output generated in step 4.
+Example:
+```
+oc login https://api.<mydomain>:6443 --username cluster-admin --password <password>
+```
