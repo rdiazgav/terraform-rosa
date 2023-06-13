@@ -11,12 +11,11 @@ variable "url" {
 variable "htpasswd_username" {
   type        = string
   description = "htpasswd username"
-  default     = "kubeadmin"
+  default     = "clusteradmin"
 }
 
 variable "htpasswd_password" {
   type        = string
   description = "htpasswd password"
   sensitive   = true
-  default     = "p455w0rd123"
 }
