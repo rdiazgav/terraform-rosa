@@ -5,25 +5,25 @@ variable "aws_region" {
 }
 
 variable "env_name" {
-    default = "lmartinhrosaenvb"
+    default = "rosa-csa-test-rosaenvb"
     description   = "Environment name"
     type = string
 }
 
 variable "egress_env_name" {
-    default = "lmartinhegressenvb"
+    default = "rosa-csa-test-egressenvb"
     description   = "Environment name"
     type = string
 }
 
 variable "cluster_name" {
-    default = "lmartinh04"
+    default = "rosa-csa-test"
     description   = "Cluster name"
     type = string
 }
 
 variable "ocp_version" {
-    default = "4.12.14"
+    default = "4.12.18"
     description   = "OCP Version to Install."
     type = string
 }
