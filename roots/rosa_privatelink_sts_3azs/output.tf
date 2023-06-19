@@ -11,6 +11,10 @@ output "bastion_private_key" {
     sensitive = true
 }
 
+locals {
+   subnets = join(",", [for subnet in aws_subnet.rosa-subnet-priv: subnet.id])
+}
+
 output "script" {
     value = <<EOF
 [+] Create the following script and modify it at will. Run the script where rosa CLI is configured:
