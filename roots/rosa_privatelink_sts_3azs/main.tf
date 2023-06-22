@@ -362,22 +362,3 @@ resource "aws_security_group" "rosa-vpc-bastion-sg" {
         cidr_blocks      = ["0.0.0.0/0"]
     }
 }
-
-// Creation Bastion ROSA VM
-resource "aws_instance" "rosa-vpc-bastion" {
-    ami                           = var.generic_ami[var.aws_region]
-    associate_public_ip_address   = false
-    instance_type                 = "t3.micro"
-    private_ip                    = "10.1.21.100"    // rosa vpc subnet_public
-    key_name                      = aws_key_pair.generated_key.key_name    
-    subnet_id                     = local.subnets_rosa_pub[0]     //rosa_vpc subnet_public - bastion only in one AZ - grabs only one AZ subnet
-    vpc_security_group_ids        = [aws_security_group.rosa-vpc-bastion-sg.id]
-    user_data                     = templatefile("../../modules/bastion/templates/user_data.sh.tftpl", {username = "ec2-user"})
-    tags                          = {
-        Owner = var.cluster_owner_tag
-        Name  = "${var.env_name}-bastion"
-    }
-    credit_specification {
-       cpu_credits = "unlimited"
-    }
-}
