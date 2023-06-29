@@ -1,3 +1,3 @@
-output "rosa_private_zone_domain_UNDOCUMENTED" {
+output "rosa_private_zone_domain" {
     value     = "${ocm_cluster_rosa_classic.rosa.domain}"
 }
