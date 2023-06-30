@@ -1,8 +1,3 @@
-variable "pubkey" {
-    default = ""
-    description   = "Pubkey to use in any system that requires it."
-}
-
 # Using RHEL AMIs https://access.redhat.com/solutions/15356
 variable "generic_ami" {
     type = map

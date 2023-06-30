@@ -24,7 +24,7 @@ resource "ocm_cluster_rosa_classic" "rosa" {
   aws_subnet_ids       = "${local.subnets_rosa_priv}"
   compute_machine_type = "m5.xlarge"
   multi_az             = true
-  version              = "openshift-v${var.ocp_version}" 
+  version              = "${var.ocp_version}" 
   machine_cidr         = aws_vpc.rosa-vpc.cidr_block
   properties           = { rosa_creator_arn = data.aws_caller_identity.current.arn } 
   sts                  = local.sts_roles 
@@ -43,7 +43,7 @@ module "operator_roles" {
 
   create_operator_roles = true
   create_oidc_provider  = true
-  create_account_roles  = false
+  create_account_roles  = true
 
   cluster_id                  = ocm_cluster_rosa_classic.rosa.id
   rh_oidc_provider_thumbprint = ocm_cluster_rosa_classic.rosa.sts.thumbprint

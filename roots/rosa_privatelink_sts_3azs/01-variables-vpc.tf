@@ -16,18 +16,6 @@ variable "egress_env_name" {
     type = string
 }
 
-variable "cluster_name" {
-    default = "rosa-csa-test"
-    description   = "Cluster name"
-    type = string
-}
-
-variable "ocp_version" {
-    default = "4.12.18"
-    description   = "OCP Version to Install."
-    type = string
-}
-
 variable "cluster_owner_tag" {
     default = "lmartinh"
     description   = "Cluster owner name to tag resources"

@@ -116,7 +116,7 @@ resource "aws_route_table_association" "rosa-private-rta" {
 
 resource "aws_eip" "egress-eip" {
     for_each     = toset(data.aws_availability_zones.azs.names)
-    vpc          = true
+    //vpc          = true
     depends_on   = [aws_internet_gateway.egress-igw]
     tags = {
         Owner = "${var.cluster_owner_tag}"

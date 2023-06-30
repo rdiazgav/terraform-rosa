@@ -1,8 +1,24 @@
-data "aws_route53_zone" "private_rosa_dns_zone" {
-  name         = "${ocm_cluster_rosa_classic.rosa.domain}"
-  private_zone = true
+resource "null_resource" "get_cluster_dns_zone" {
+  triggers  =  { 
+    always_run   = "${timestamp()}" 
+    cluster_name = var.cluster_name
+  }
+  provisioner "local-exec" {
+    command = "aws route53 list-hosted-zones | jq -r '.HostedZones[].Name' | grep -i '^${self.triggers.cluster_name}.' | tr -d '\n' > ${path.module}/private-hosted-zone-name.txt"
+  }
+  depends_on = [null_resource.rosa_cli_installer]
+}
 
-  depends_on = [ocm_cluster_wait.rosa]
+data "local_file" "private-hosted-zone-name" {
+  filename = "${path.module}/private-hosted-zone-name.txt"
+  depends_on = [null_resource.get_cluster_dns_zone]
+}
+
+data "aws_route53_zone" "private_rosa_dns_zone" {  
+  private_zone = true  
+  name = "${data.local_file.private-hosted-zone-name.content}"
+
+  depends_on = [data.local_file.private-hosted-zone-name]
 }
 
 resource "aws_route53_zone_association" "egress-rosa-resolver-vpc-assotiation" {
@@ -45,4 +61,3 @@ resource "aws_route53_resolver_endpoint" "rosa-resolver-inbound-endpoint" {
     }
   }
 }
-
