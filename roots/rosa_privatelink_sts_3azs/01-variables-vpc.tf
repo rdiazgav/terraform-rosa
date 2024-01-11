@@ -5,19 +5,19 @@ variable "aws_region" {
 }
 
 variable "env_name" {
-    default = "rosa-csa-test-rosaenvb"
+    default = "rosa-test-env"
     description   = "Environment name"
     type = string
 }
 
 variable "egress_env_name" {
-    default = "rosa-csa-test-egressenvb"
+    default = "rosa-egressenv"
     description   = "Environment name"
     type = string
 }
 
 variable "cluster_owner_tag" {
-    default = "lmartinh"
+    default = "infra-team"
     description   = "Cluster owner name to tag resources"
     type = string
 }
