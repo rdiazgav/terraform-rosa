@@ -3,6 +3,10 @@ data "aws_caller_identity" "current" {}
 data "aws_availability_zones" "azs" {
     state = "available"
     filter {
+    name   = "zone-name"
+    values = data.aws_availability_zones.azs.names.0
+  }
+    filter {
         name   = "region-name"
         values = [var.aws_region]
     }
