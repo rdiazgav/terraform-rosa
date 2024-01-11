@@ -4,7 +4,7 @@ data "aws_availability_zones" "azs" {
     state = "available"
     filter {
     name   = "zone-name"
-    values = data.aws_availability_zones.azs.names.0
+    values = data.aws_availability_zones.azs.names[0]
   }
     filter {
         name   = "region-name"
